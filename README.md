@@ -1,0 +1,2 @@
+# TC1410N
+0.5 A MOSFET Gate Driver
