@@ -1,0 +1,44 @@
+*LTspice
+*
+*TC1410N
+*Boost converter
+*AE01007410
+*
+*netlist
+.include TC1410N.cir
+*
+*params
+.param VSOURCE=12
+.param RLOAD=10
+.param RGATE=1
+.param RIN=50
+.param RSER_L=10m
+.param IND=1u
+.param COUT=1u
+*
+.param VPUL=5
+.param DELAY=50n
+.param TR=10p
+.param TF=10p
+.param DUTY=500n
+.param CYCLE=1u
+.param NCYCLES=50
+.param X_BASE=50u
+*
+.IC I(L1)=10
+*
+*.OPTIONS EXPAND
+*.OPTIONS LIBRARY
+*.OPTIONS STEPGMIN
+*.OPTIONS ITL1= 1000
+*.OPTIONS ITL2= 1000
+*.OPTIONS ITL4= 1000
+*.OPTIONS RELTOL= 0.01
+*.PROBE V(alias(*)) I(alias(*)) W(alias(*)) D(alias(*)) NOISE(alias(*))
+
+*transient response
+*
+.tran 0 {X_BASE} 0
+*
+.backanno
+.end

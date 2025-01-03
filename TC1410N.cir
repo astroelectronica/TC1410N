@@ -1,0 +1,16 @@
+.title KiCad schematic
+.include "models/Dmbr340rl.mod"
+.include "models/TC1410N_I2D_A.lib"
+.include "models/irfz44n.spi"
+XU1 /INPUT /DRIVE VCC 0 TC1410N_I2D_A
+R2 /CONTROL /INPUT {RIN}
+V2 VCC 0 {VSOURCE}
+R4 VCC /INDUCTOR {RSER_L}
+V1 /CONTROL 0 PULSE(0 {VPUL} {delay} {tr} {tf} {duty} {cycle})
+D1 /SW /OUT Dmbr340rl
+L1 /INDUCTOR /SW {IND}
+XU2 /SW /GATE 0 irfz44n
+R3 /DRIVE /GATE {RGATE}
+R1 0 /OUT {RLOAD}
+C1 /OUT 0 {COUT} IC=24
+.end

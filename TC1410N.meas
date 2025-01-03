@@ -1,0 +1,22 @@
+*transient response
+.meas tref1 find time when V(/out)=V(/sw) cross=100
+.meas tref2 find time when V(/out)=V(/sw) cross=101
+.meas tref3 find time when V(/out)=V(/sw) cross=102
+*
+.meas freq_sw param (1/(tref3-tref1))
+.meas time_cycle param (1/freq_sw)
+.meas time_duty param (tref2-tref1)
+.meas %_duty param ((time_duty*100)/time_cycle)
+*
+.meas rms_I_inductor rms I(L1) from=tref1 to=tref3
+.meas max_I_inductor max I(L1) from=tref1 to=tref3
+.meas min_I_inductor min I(L1) from=tref1 to=tref3
+*
+.meas rms_V_out rms V(/out) from=tref1 to=tref3
+.meas max_V_out max V(/out) from=tref1 to=tref3
+.meas min_V_out min V(/out) from=tref1 to=tref3
+*
+.meas rms_V_sw rms V(/sw) from=tref1 to=tref3
+.meas max_V_sw max V(/sw) from=tref1 to=tref3
+.meas min_V_sw min V(/sw) from=tref1 to=tref3
+*
